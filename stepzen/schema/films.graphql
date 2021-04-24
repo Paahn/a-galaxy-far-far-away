@@ -1,0 +1,9 @@
+type Film {
+  title: String
+  episode_id: Int
+}
+
+type Query {
+    films(name: String!): [Film]
+        @rest(resultroot:"films[]", endpoint: "https://swapi.dev/api/films")
+}

@@ -1,0 +1,16 @@
+type Character {
+    pk: Int!
+    name: String
+    image: String
+}
+
+type Query {
+    character(pk: Int!): Character 
+        @rest(
+            endpoint: "http://swgoh.gg/api/characters/$pk"
+            )
+    getCharacters: [Character]
+        @rest(
+            endpoint:"http://swgoh.gg/api/characters"
+        )
+}

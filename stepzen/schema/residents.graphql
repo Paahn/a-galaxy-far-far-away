@@ -1,0 +1,10 @@
+type Resident {
+    name: String
+}
+
+type Query {
+    residents: [Resident]
+        @rest(
+          resultroot: "results[]", endpoint: "https://swapi.dev/api/people"
+        )
+}

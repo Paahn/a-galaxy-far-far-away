@@ -1,0 +1,16 @@
+type Planet {
+  name: String!
+  diameter: String
+  climate: String
+  url: String
+  residents: [Resident]
+    @materializer (query: "residents")
+  films: [Film]
+    @materializer (query: "films")
+}
+type Query {
+  planet(id: ID!): Planet 
+    @rest(endpoint: "https://swapi.dev/api/planets/$id;")
+  getPlanets: [Planet]
+    @rest(resultroot: "results[]", endpoint: "https://swapi.dev/api/planets/")
+}
